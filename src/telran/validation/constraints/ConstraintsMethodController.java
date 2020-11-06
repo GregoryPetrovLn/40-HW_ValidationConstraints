@@ -111,4 +111,13 @@ public class ConstraintsMethodController {
         return res;
     }
 
+
+    public static String validAnnotationMethod(DataTransferObject dto) {
+
+
+        return null;
+    }
+
+
+
 }

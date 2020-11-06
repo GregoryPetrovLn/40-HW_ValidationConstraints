@@ -1,3 +1,5 @@
+package telran.dto;
+
 import telran.validation.constraints.*;
 
 import java.io.Serializable;
@@ -30,11 +32,15 @@ public class Employee implements Serializable {
     @Max(value = MAX_SALARY, message = "Salary can't be grater than " + MAX_SALARY)
     private int salary;
 
+    @Valid(message = "There are no annotations in field address")
+    private Address address;
 
-    public Employee(long id, String name, String email, LocalDate birthday, String department, int salary) {
+
+    public Employee(long id, String name,Address address, String email, LocalDate birthday, String department, int salary) {
         super();
         this.id = id;
         this.name = name;
+        this.address = address;
         this.email = email;
         this.birthDate = birthday;
         this.department = department;
@@ -65,6 +71,10 @@ public class Employee implements Serializable {
         return email;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -74,6 +84,7 @@ public class Employee implements Serializable {
                 ", birthDate=" + birthDate +
                 ", department='" + department + '\'' +
                 ", salary=" + salary +
+                ", address=" + address +
                 '}';
     }
 

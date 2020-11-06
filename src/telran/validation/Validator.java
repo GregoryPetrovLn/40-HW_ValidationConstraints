@@ -19,6 +19,7 @@ public class Validator {
         storage.put(Email.class, ConstraintsMethodController::emailAnnotationMethod);
         storage.put(Past.class, ConstraintsMethodController::pastAnnotationMethod);
         storage.put(Future.class, ConstraintsMethodController::futureAnnotationMethod);
+        storage.put(Valid.class, ConstraintsMethodController::validAnnotationMethod);
     }
 
 
@@ -33,8 +34,8 @@ public class Validator {
         for (Field field : fields) {
             field.setAccessible(true);
             for (Annotation annotation : field.getAnnotations()) {
-                dto = new DataTransferObject(obj, annotation, field);
-                res.add(storage.get(annotation.annotationType()).apply(dto));
+                    dto = new DataTransferObject(obj, annotation, field);
+                    res.add(storage.get(annotation.annotationType()).apply(dto));
             }
         }
 
